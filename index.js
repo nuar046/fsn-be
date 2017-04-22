@@ -11,10 +11,7 @@ var User     = require('./models/User');
 var Places = require('./models/Places');
 
 // Connect to DB
-//mongoose.connect(process.env.MONGO_URL);
-console.log(process.env.MONGOLAB_URI);
 mongoose.connect(process.env.MONGOLAB_URI);
-//mongoose.connect('mongodb://127.0.0.1:27017/DB');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(morgan("dev"));
