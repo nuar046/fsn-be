@@ -1,0 +1,19 @@
+{
+  "name": "fsn-be",
+  "version": "1.0.0",
+  "description": "foods spirit network",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+        "express": "latest",
+        "body-parser": "latest",
+        "morgan": "latest",
+        "mongoose": "latest",
+        "express-jwt": "latest",
+        "jsonwebtoken": "latest"
+   },
+  "author": "anwar",
+  "license": "ISC"
+}
