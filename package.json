@@ -7,13 +7,14 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-        "express": "latest",
-        "body-parser": "latest",
-        "morgan": "latest",
-        "mongoose": "latest",
-        "express-jwt": "latest",
-        "jsonwebtoken": "latest"
-   },
+    "personalized_api": "^1.0.0",
+    "body-parser": "latest",
+    "express": "latest",
+    "express-jwt": "latest",
+    "jsonwebtoken": "latest",
+    "mongoose": "latest",
+    "morgan": "latest"
+  },
   "author": "anwar",
   "license": "ISC"
 }
