@@ -4,17 +4,12 @@ var morgan     = require("morgan");
 var bodyParser = require("body-parser");
 var jwt        = require("jsonwebtoken");
 var mongoose   = require("mongoose");
-var GenericApi = require('generic_api');
 var app        = express();
  
-var api = new GenericApi.UserApi(); 
 var port = process.env.PORT || 3001;
 var User     = require('./models/User');
 var Places = require('./models/Places');
-var PersonalizedApi = require('personalized_api');
 
-var api = new PersonalizedApi.ApiManagerApi();
-process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 // Connect to DB
 mongoose.connect(process.env.MONGOLAB_URI);
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -26,26 +21,6 @@ app.use(function(req, res, next) {
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type, Authorization');
     next();
 });
-
-app.post('/forgotUsername', function(req, res) {
-var email = req.body.email;
-var fullname = req.body.fullname;    
-var callback = function(error, data, response) {
-  if (error) {
-       res.json({
-             type: false,
-             error:error
-            });
-  } else {
-       res.json({
-             type: true,
-             data:data
-            });
-  }
-};
-api.apiManagerForgotUserUsername(email, fullname, callback);
-});
-
 
 app.post('/authenticate', function(req, res) {
     console.log(req.body.email);
@@ -83,31 +58,6 @@ app.post('/authenticate', function(req, res) {
     });	
 	}
 });
-
-
-app.post('/forgotPassword', function(req, res) {
-var username = req.body.username; // {String}  
-var fullname = req.body.fullname; // {String}  
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-	   res.json({
-                            type:false,
-							data:error
-                        });
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-	      res.json({
-                            type: true,
-                            return_data: data
-                        });
-  }
-};
-api.userForgotPassword(username, fullname, callback);
-});
-
-
 
 app.post('/signin', function(req, res) {
     User.findOne({email: req.body.email, password: req.body.password}, function(err, user) {
