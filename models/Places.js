@@ -7,7 +7,8 @@ var PlacesSchema   = new Schema({
     address: String,
     contactNo: String,
     locationLat: String,
-	locationLong: String
+	locationLong: String,
+	imageBase64:String
 });
 
 module.exports = mongoose.model('Places', PlacesSchema);

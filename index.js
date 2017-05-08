@@ -100,7 +100,8 @@ app.post('/postin', function(req, res) {
     placesModel.contactNo = req.body.contactNo;
     placesModel.locationLat = req.body.locationLat;
 	placesModel.locationLong = req.body.locationLong;
-    console.log(req.body);
+    placesModel.imageBase64 = req.body.imageBase64;
+	console.log(req.body);
 	console.log(placesModel);
 	placesModel.save(function(err, place) {
         res.json({
