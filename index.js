@@ -12,7 +12,7 @@ var Places = require('./models/Places');
 
 // Connect to DB
 mongoose.connect(process.env.MONGOLAB_URI);
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true , limit: '50mb'}));
 app.use(bodyParser.json());
 app.use(morgan("dev"));
 app.use(function(req, res, next) {
@@ -101,8 +101,6 @@ app.post('/postin', function(req, res) {
     placesModel.locationLat = req.body.locationLat;
 	placesModel.locationLong = req.body.locationLong;
     placesModel.imageBase64 = req.body.imageBase64;
-	console.log(req.body);
-	console.log(placesModel);
 	placesModel.save(function(err, place) {
         res.json({
              type: true,
