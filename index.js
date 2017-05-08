@@ -100,10 +100,13 @@ app.post('/postin', function(req, res) {
     placesModel.contactNo = req.body.contactNo;
     placesModel.locationLat = req.body.locationLat;
 	placesModel.locationLong = req.body.locationLong;
-    placesModel.save(function(err, place) {
+    console.log(req.body);
+	console.log(placesModel);
+	placesModel.save(function(err, place) {
         res.json({
              type: true,
-             status: "Success save" 
+             status: "Success save",
+			 data:place
             });
     })
 });
