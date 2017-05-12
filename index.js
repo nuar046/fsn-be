@@ -12,8 +12,8 @@ var Places = require('./models/Places');
 
 // Connect to DB
 mongoose.connect(process.env.MONGOLAB_URI);
-app.use(bodyParser.urlencoded({ extended: true , limit: '50mb'}));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json({ limit:'50mb' }));
 app.use(morgan("dev"));
 app.use(function(req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', '*');
